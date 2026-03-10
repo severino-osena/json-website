@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+:root {
+  --luxury-gold: #f5d48b;
+  --luxury-soft-gold: #f7e3b5;
+  --luxury-ink: #0b1020;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-slate-100 antialiased;
+  }
+}
+
+/* Luxury scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.7) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 212, 139, 0.9),
+    rgba(148, 163, 184, 0.6)
+  );
+  border-radius: 999px;
+}
+
+@layer components {
+  .lux-glass {
+    @apply bg-slate-900/60 backdrop-blur-xl border border-white/10;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
+  }
+
+  .section-max-width {
+    @apply max-w-6xl mx-auto px-6 md:px-10;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-sm font-semibold tracking-[0.3em] uppercase text-slate-400;
+  }
+
+  .section-heading {
+    @apply mt-3 text-3xl md:text-4xl font-semibold text-slate-50;
+  }
+
+  .section-subtitle {
+    @apply mt-3 max-w-2xl text-sm md:text-base text-slate-400;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-slate-100;
+  }
+
+  .badge-soft {
+    @apply rounded-full px-3 py-1 text-xs font-medium;
+    background-color: rgba(245, 212, 139, 0.1);
+    color: #f5d48b;
+  }
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    130deg,
+    rgba(245, 212, 139, 0.9),
+    rgba(56, 189, 248, 0.7),
+    rgba(236, 72, 153, 0.7)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* 3D Background - lighter blue base for areas outside 3D drawing */
+.bg-3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 20%, #0c4a6e 40%, #1e3a5f 60%, #0f172a 80%, #0c1222 100%);
+}
+
+/* Moving 3D IT space - follows mouse or auto-animates when idle */
+.bg-3d-ai-world {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=40");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  transition: transform 0.15s ease-out;
+}
+
+.bg-3d-ai-world-idle {
+  animation: bg3d-pan-idle 25s ease-in-out infinite;
+}
+
+@keyframes bg3d-pan-idle {
+  0%, 100% { transform: translate(0, 0) scale(1.02); }
+  25% { transform: translate(-3%, -2%) scale(1.04); }
+  50% { transform: translate(2%, 3%) scale(0.98); }
+  75% { transform: translate(-2%, 1%) scale(1.03); }
+}
+
+.bg-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 85% 30%, rgba(34, 197, 94, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(56, 189, 211, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, transparent 30%, transparent 70%, rgba(12, 18, 34, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* 3D perspective grid - follows mouse or auto-animates when idle */
+.bg-3d-inner {
+  position: absolute;
+  inset: 0;
+  perspective: 800px;
+  transition: transform 0.2s ease-out;
+}
+
+.bg-3d-inner-idle {
+  animation: bg3d-inner-idle 20s ease-in-out infinite;
+}
+
+@keyframes bg3d-inner-idle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(15px, -10px) rotate(1deg); }
+  66% { transform: translate(-10px, 15px) rotate(-1deg); }
+}
+
+.bg-3d-grid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background:
+    linear-gradient(rgba(245, 212, 139, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 212, 139, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(600px) rotateX(60deg);
+  transform-origin: center bottom;
+  animation: bg3d-grid-float 15s ease-in-out infinite;
+}
+
+@keyframes bg3d-grid-float {
+  0%, 100% { transform: perspective(600px) rotateX(60deg) translateY(0); }
+  50% { transform: perspective(600px) rotateX(60deg) translateY(15px); }
+}
+
+/* Soft glowing orbs - moving/drifting */
+.bg-3d-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+}
+
+.bg-3d-orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(245, 212, 139, 0.2) 0%, transparent 70%);
+  animation: bg3d-orb-drift-1 20s ease-in-out infinite;
+}
+
+.bg-3d-orb-2 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+  animation: bg3d-orb-drift-2 25s ease-in-out infinite;
+}
+
+.bg-3d-orb-3 {
+  width: 350px;
+  height: 350px;
+  bottom: -5%;
+  left: 30%;
+  background: radial-gradient(circle, rgba(56, 189, 211, 0.12) 0%, transparent 70%);
+  animation: bg3d-orb-drift-3 22s ease-in-out infinite;
+}
+
+@keyframes bg3d-orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 25px) scale(0.95); }
+}
+
+@keyframes bg3d-orb-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-25px, 30px); }
+}
+
+@keyframes bg3d-orb-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -25px); }
+}
+
+/* Hide cube - was causing visibility issues */
+.bg-3d-cube,
+.bg-3d-cube-face {
+  display: none;
+}
+
+.hero-fade {
+  background: radial-gradient(circle at top left, #1e293b 0, transparent 55%),
+    radial-gradient(circle at 10% 80%, #22c55e33 0, transparent 45%),
+    radial-gradient(circle at 90% 20%, #eab30833 0, transparent 40%);
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=40");
+  mix-blend-mode: soft-light;
+}
+
