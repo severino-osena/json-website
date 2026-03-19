@@ -11,7 +11,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Чен Ын Гиль | Senior Full‑Stack Developer",
+  title: "Canyok | Senior Full‑Stack Developer",
   description:
     "Senior Full‑Stack Developer с 10+ годами коммерческого опыта в JavaScript/TypeScript и Python. Разработка и сопровождение веб‑приложений, SaaS‑платформ и внутренних бизнес‑систем.",
 };

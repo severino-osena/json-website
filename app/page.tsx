@@ -184,7 +184,7 @@ export default function Home() {
             <h1 className="mt-4 font-semibold text-slate-50">
               <span className="flex items-baseline gap-3 text-4xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl tracking-tight">
                 <span className="text-amber-300 drop-shadow-[0_0_20px_rgba(251,191,36,0.9)]">
-                  Чен
+                Волков 
                 </span>
                 <span
                   className="bg-clip-text text-transparent"
@@ -196,7 +196,7 @@ export default function Home() {
                     filter: "drop-shadow(0 0 24px rgba(251,191,36,0.5))",
                   }}
                 >
-                  Ын Гиль
+                  Александр Сергеевич
                 </span>
               </span>
               <span className="mt-4 block text-lg leading-snug text-slate-200 sm:text-xl md:text-2xl">
@@ -267,9 +267,9 @@ export default function Home() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/10 bg-black/40 shadow-luxury">
             <Image
               src="/photo.png"
-              alt="Чен Ын Гиль — Senior Full‑Stack Developer"
+              alt="Волков Александр Сергеевич — Senior Full‑Stack Developer"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[50%_18%]"
               priority
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
@@ -299,16 +299,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating cards */}
-          <div className="pointer-events-none absolute -left-6 top-10 hidden max-w-[220px] space-y-2 rounded-2xl bg-slate-900/80 p-3 text-xs text-slate-300 backdrop-blur-xl ring-1 ring-white/10 md:block">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-400">
-              Основной стек
-            </p>
-            <p className="text-[11px] text-slate-300">
-              JavaScript/TypeScript • React • Next.js • Node.js • FastAPI •
-              PostgreSQL • MongoDB • Docker • AWS
-            </p>
-          </div>
         </div>
       </section>
 
@@ -576,10 +566,10 @@ export default function Home() {
                   Email
                 </p>
                 <a
-                  href="mailto:json.gy@mail.ru"
+                  href="mailto:jsongy0818@gmail.com"
                   className="text-luxury-gold hover:underline"
                 >
-                  json.gy@mail.ru
+                  jsongy0818@gmail.com
                 </a>
               </div>
               <div className="space-y-1">
@@ -675,7 +665,7 @@ export default function Home() {
               </svg>
             </a>
             <a
-              href="mailto:json.gy@mail.ru"
+              href="mailto:jsongy0818@gmail.com"
               className="flex items-center gap-2 text-slate-400 transition hover:text-amber-300"
               aria-label="Email"
             >
@@ -684,7 +674,7 @@ export default function Home() {
               </svg>
             </a>
             <a
-              href="https://github.com/chen-dev0818"
+              href="https://github.com/canyok-dev0818"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-400 transition hover:text-blue-400"
@@ -706,7 +696,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p>
-              © {new Date().getFullYear()} Чен Ын Гиль. Senior Full‑Stack
+              © {new Date().getFullYear()} Волков Александр Сергеевич. Senior Full‑Stack
               Developer (JavaScript / TypeScript / Python).
             </p>
             <p className="flex flex-wrap gap-2">
